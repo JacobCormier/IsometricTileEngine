@@ -1,18 +1,18 @@
 #include "PlayScreen.h"
 
 PlayScreen::PlayScreen() {
-	mTile = new Tile();
-	mTile->Parent(this);
-	mTile->Position(Vec2_Zero);
+	mTileMap = new TileMap();
+	mTileMap->Parent(this);
+	mTileMap->Position(Vector2(Vec2_Zero));
 }
 PlayScreen::~PlayScreen() {
-	delete mTile;
-	mTile = nullptr;
+	delete mTileMap;
+	mTileMap = nullptr;
 }
 
 void PlayScreen::Update() {
 
 }
 void PlayScreen::Render() {
-	mTile->Render();
+	mTileMap->Render();
 }

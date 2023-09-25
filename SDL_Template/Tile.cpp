@@ -1,6 +1,10 @@
 #include "Tile.h"
 
+int Tile::sTileCount = 0;
+
 Tile::Tile() {
+	sTileCount++;
+
 	mTileTexture = new GLTexture("Tile.png");
 	mTileTexture->Scale(mTileTexture->Scale() * 4.0f);
 	mTileTexture->Parent(this);

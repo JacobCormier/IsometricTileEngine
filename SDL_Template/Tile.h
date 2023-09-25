@@ -8,6 +8,7 @@ using namespace SDLFramework;
 
 class Tile : public GameEntity {
 private:
+	static int sTileCount;
 	GLTexture* mTileTexture;
 
 	// pointer to GameEntity?
@@ -15,8 +16,8 @@ public:
 	Tile();
 	~Tile();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 private:
 };
 

@@ -1,13 +1,13 @@
 #ifndef __PLAYSCREEN_H
 #define __PLAYSCREEN_H
 
-#include "Tile.h"
+#include "TileMap.h"
 
 using namespace SDLFramework;
 
 class PlayScreen : public GameEntity {
 private:
-	Tile* mTile;
+	TileMap* mTileMap;
 
 public:
 	PlayScreen();
