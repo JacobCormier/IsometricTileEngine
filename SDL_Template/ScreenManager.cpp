@@ -9,7 +9,6 @@ ScreenManager* ScreenManager::Instance() {
 
 	return sInstance;
 }
-
 void ScreenManager::Release() {
 	delete sInstance;
 	sInstance = nullptr;
@@ -18,7 +17,6 @@ void ScreenManager::Release() {
 void ScreenManager::Update() {
 		mPlayScreen->Update();
 }
-
 void ScreenManager::Render() { 
 		mPlayScreen->Render();
 }
@@ -31,7 +29,6 @@ ScreenManager::ScreenManager() {
 
 	mCurrentScreen = Play;
 }
-
 ScreenManager::~ScreenManager() {
 	mInput = nullptr;
 

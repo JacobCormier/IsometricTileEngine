@@ -1,6 +1,7 @@
 #ifndef __SCREENMANAGER_H
 #define __SCREENMANAGER_H
 #include "PlayScreen.h"
+#include "InputManager.h"
 
 // StartScreen is currently unused,
 // still has Galaga stuff
