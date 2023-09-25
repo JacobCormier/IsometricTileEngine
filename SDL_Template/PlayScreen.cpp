@@ -15,10 +15,6 @@ PlayScreen::PlayScreen() {
 	mPlayer->Parent(this);
 	mPlayer->Position(PLAYER_STARTING_POSITION);
 
-	mTunnel = new Tunnel();
-	mTunnel->Parent(this);
-	mTunnel->Position(Vector2(-Graphics::SCREEN_WIDTH * 0.5f, 0.0f));
-
 	CreateLabels();
 
 	mDistanceScore = 0;
@@ -26,13 +22,6 @@ PlayScreen::PlayScreen() {
 	mPlayerSmokeTrailTimer = 0.0f;
 
 	mBestScore = 0;
-
-	mDistanceScoreboard = new Scoreboard();
-	mDistanceScoreboard->Parent(this);
-	mDistanceScoreboard->Position(Vector2(-240, 420.0f));
-	mBestScoreboard = new Scoreboard();
-	mBestScoreboard->Parent(this);
-	mBestScoreboard->Position(Vector2(374, 420.0f));
 }
 PlayScreen::~PlayScreen() {
 	mTimer = nullptr;
@@ -41,9 +30,6 @@ PlayScreen::~PlayScreen() {
 
 	delete mPlayer;
 	mPlayer = nullptr;
-
-	delete mTunnel;
-	mTunnel = nullptr;
 
 	delete mClickToStartLabel;
 	mClickToStartLabel = nullptr;
@@ -63,11 +49,6 @@ PlayScreen::~PlayScreen() {
 	delete mCopyrightLabelTwo;
 	mCopyrightLabelOne = nullptr;
 	mCopyrightLabelTwo = nullptr;
-
-	delete mDistanceScoreboard;
-	mDistanceScoreboard = nullptr;
-	delete mBestScoreboard;
-	mBestScoreboard = nullptr;
 }
 
 void PlayScreen::Update() {
@@ -75,7 +56,6 @@ void PlayScreen::Update() {
 
 	if (mPlayer->Active()) {
 		Active(true);
-		mTunnel->Active(true);
 
 		mDistanceTimer += mTimer->DeltaTime();
 		if (mDistanceTimer > SCORE_DELAY_TIME) {
@@ -83,26 +63,10 @@ void PlayScreen::Update() {
 			mDistanceTimer = 0.0f;
 		}
 
-		if (mDistanceScore != mDistanceScoreboard->GetScore()) {
-			mDistanceScoreboard->Score(mDistanceScore);
-		}
-		if (mBestScore != mBestScoreboard->GetScore()) {
-			mBestScoreboard->Score(mBestScore);
-		}
-
-		mPlayerSmokeTrailTimer += mTimer->DeltaTime();
-		if (mPlayerSmokeTrailTimer > PLAYER_SMOKE_DELAY_TIME) {
-			mPlayerSmokeTrailTimer = 0.0f;
-			mTunnel->AddSmokeTrail(mPlayer->Position());
-		}
-
 	}
 	else {
 		Active(false);
-		mTunnel->Active(false);
 	}
-
-	mTunnel->Update();
 
 	//Temporary Code to catch player and restart
 	if (mPlayer->IsDead() && mPlayer->ReadyForRespawn()) {
@@ -111,7 +75,6 @@ void PlayScreen::Update() {
 	}
 }
 void PlayScreen::Render() {
-	mTunnel->Render();
 
 	if (!Active() && !mPlayer->IsDead()) {
 		mClickToStartLabel->Render();
@@ -123,23 +86,17 @@ void PlayScreen::Render() {
 	mDistanceLabel->Render();
 	mBestLabel->Render();
 
-	mDistanceScoreboard->Render();
-	mBestScoreboard->Render();
-
 	mPlayer->Render();
 }
 
 void PlayScreen::ResetGame() {
 	ResetPlayer();
-	mTunnel->NewGame();
 
 	if (mDistanceScore > mBestScore) {
 		mBestScore = mDistanceScore;
 	}
-	mBestScoreboard->Score(mBestScore);
 	mDistanceScore = 0;
 	mDistanceTimer = 0.0f;
-	mDistanceScoreboard->Score(mDistanceScore);
 
 	mPlayerSmokeTrailTimer = 0.0f;
 }

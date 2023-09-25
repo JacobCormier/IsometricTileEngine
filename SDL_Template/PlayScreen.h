@@ -1,8 +1,6 @@
 #ifndef __PLAYSCREEN_H
 #define __PLAYSCREEN_H
 #include "Player.h"
-#include "Tunnel.h"
-#include "Scoreboard.h"
 
 class PlayScreen : public GameEntity {
 private:
@@ -16,7 +14,6 @@ private:
 	
 	Player* mPlayer;
 	float mPlayerSmokeTrailTimer;
-	Tunnel* mTunnel;
 
 	// These are only visible when the screen isn't active
 	GLTexture* mClickToStartLabel;
@@ -27,11 +24,9 @@ private:
 	
 	// These are visible always
 	GLTexture* mDistanceLabel;
-	Scoreboard* mDistanceScoreboard;
 	int mDistanceScore;
 	float mDistanceTimer;
 	GLTexture* mBestLabel;
-	Scoreboard* mBestScoreboard;
 	int mBestScore;
 
 public:
