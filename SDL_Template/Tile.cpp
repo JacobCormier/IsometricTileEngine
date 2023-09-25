@@ -52,14 +52,23 @@ void Tile::Update() {
 		(mInput->MousePosition().x <= Position().x + 15) &&
 		(mInput->MousePosition().y >= Position().y - 30) &&
 		(mInput->MousePosition().y <= Position().y + 0)) {			
-			mCurrentState = TileState::ALT;
+			
+			if (mCurrentState == TileState::DEFAULT) {
+				mCurrentState = TileState::ALT;
+			}
+
 			if (mInput->MouseButtonPressed(InputManager::MouseButton::Left)) {
 				PlaceEntityOnTile(new Tile());
+			}
+			else if (mInput->MouseButtonPressed(InputManager::MouseButton::Right)) {
+				mCurrentState = TileState::WATER;
 			}
 
 		}
 		else {
-			mCurrentState = TileState::DEFAULT;
+			if (mCurrentState == TileState::ALT) {
+				mCurrentState = TileState::DEFAULT;
+			}
 		}
 	}
 }
