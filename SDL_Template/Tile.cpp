@@ -29,6 +29,9 @@ Tile::~Tile() {
 int Tile::GetTilesCreatedNumber() {
 	return sTilesCreated;
 }
+void Tile::ResetTileCreatedCount() {
+	sTilesCreated = 0;
+}
 
 void Tile::PlaceEntityOnTile(GameEntity* entity) {
 	if (mOnTileEntity == nullptr) {
@@ -56,18 +59,37 @@ void Tile::Update() {
 			if (mCurrentState == TileState::DEFAULT) {
 				mCurrentState = TileState::ALT;
 			}
+			if (mCurrentState == TileState::WATER) {
+				mCurrentState = TileState::SELECTED;
+			}
 
 			if (mInput->MouseButtonPressed(InputManager::MouseButton::Left)) {
-				PlaceEntityOnTile(new Tile());
+				PlaceEntityOnTile(new Tile());			
+				if (mCurrentState == TileState::ALT) {
+					mCurrentState = TileState::DEFAULT;
+				}
+				if (mCurrentState == TileState::SELECTED) {
+					mCurrentState = TileState::WATER;
+				}
 			}
 			else if (mInput->MouseButtonPressed(InputManager::MouseButton::Right)) {
-				mCurrentState = TileState::WATER;
+				TileState test = mCurrentState;
+				if (mCurrentState == TileState::ALT || mCurrentState == TileState::DEFAULT) {
+					mCurrentState = TileState::WATER;
+				}
+				else if (mCurrentState == TileState::WATER || mCurrentState == TileState::SELECTED) {
+					mCurrentState = TileState::DEFAULT;
+				}
+
 			}
 
 		}
 		else {
 			if (mCurrentState == TileState::ALT) {
 				mCurrentState = TileState::DEFAULT;
+			}
+			if (mCurrentState == TileState::SELECTED) {
+				mCurrentState = TileState::WATER;
 			}
 		}
 	}

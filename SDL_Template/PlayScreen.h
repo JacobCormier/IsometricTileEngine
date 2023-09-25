@@ -7,6 +7,8 @@ using namespace SDLFramework;
 
 class PlayScreen : public GameEntity {
 private:
+	InputManager* mInput;
+
 	TileMap* mTileMap;
 
 public:

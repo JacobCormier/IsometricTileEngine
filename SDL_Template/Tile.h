@@ -24,6 +24,7 @@ public:
 	~Tile();
 
 	static int GetTilesCreatedNumber();
+	static void ResetTileCreatedCount();
 
 	// Just a start
 	void PlaceEntityOnTile(GameEntity* entity);
