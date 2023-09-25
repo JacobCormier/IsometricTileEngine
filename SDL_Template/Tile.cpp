@@ -1,9 +1,9 @@
 #include "Tile.h"
 
-int Tile::sTileCount = 0;
+
 
 Tile::Tile() {
-	sTileCount++;
+	mOnTileEntity = nullptr;
 
 	mTileTexture = new GLTexture("Tile.png");
 	mTileTexture->Scale(mTileTexture->Scale() * 4.0f);
@@ -13,11 +13,23 @@ Tile::Tile() {
 Tile::~Tile() {
 	delete mTileTexture;
 	mTileTexture = nullptr;
+
+	if (mOnTileEntity != nullptr) {
+		delete mOnTileEntity;
+		mOnTileEntity = nullptr;
+	}
 }
 
 void Tile::Update() {
 	// Update GameEntity
+	if (mOnTileEntity != nullptr) {
+		mOnTileEntity->Update();
+	}
 }
 void Tile::Render() {
 	mTileTexture->Render();
+
+	if (mOnTileEntity != nullptr) {
+		mOnTileEntity->Render();
+	}
 }

@@ -5,6 +5,8 @@
 
 class TileMap : public GameEntity {
 private:
+	static int sTileCount;
+
 	static const int TILE_MAP_SIZE = 10;
 
 	static const int TILE_MOVE_X = 32;

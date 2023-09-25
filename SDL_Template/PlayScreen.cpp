@@ -11,7 +11,7 @@ PlayScreen::~PlayScreen() {
 }
 
 void PlayScreen::Update() {
-
+	mTileMap->Update();
 }
 void PlayScreen::Render() {
 	mTileMap->Render();
