@@ -23,7 +23,7 @@
     <ProjectGuid>{7BA8C2D7-4E80-41E0-A380-DDBF0F1FC078}</ProjectGuid>
     <RootNamespace>SDLTemplate</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>HelicopterGame</ProjectName>
+    <ProjectName>IsometricEngine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

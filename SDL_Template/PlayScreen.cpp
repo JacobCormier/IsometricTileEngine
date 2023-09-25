@@ -1,7 +1,7 @@
 #include "PlayScreen.h"
 
 const float PlayScreen::SCORE_DELAY_TIME = 0.05f;
-const float PlayScreen::PLAYER_SMOKE_DELAY_TIME = 0.06f;
+const float PlayScreen::PLAYER_SMOKE_DELAY_TIME = 0.01f;
 
 const Vector2 PlayScreen::PLAYER_STARTING_POSITION = 
 	Vector2((-Graphics::SCREEN_WIDTH * 0.1667f), (0.0f));
