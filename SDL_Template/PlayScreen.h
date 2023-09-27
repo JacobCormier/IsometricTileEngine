@@ -2,6 +2,7 @@
 #define __PLAYSCREEN_H
 
 #include "TileMap.h"
+#include "DungeonRoom.h"
 
 using namespace SDLFramework;
 
@@ -10,6 +11,9 @@ private:
 	InputManager* mInput;
 
 	TileMap* mTileMap;
+	//DungeonRoom* mTestRoom;
+
+
 
 public:
 	PlayScreen();

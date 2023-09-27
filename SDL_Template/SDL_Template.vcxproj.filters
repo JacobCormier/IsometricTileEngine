@@ -120,6 +120,9 @@
     <ClCompile Include="TileMap.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="DungeonRoom.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -198,6 +201,9 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="TileMap.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonRoom.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
