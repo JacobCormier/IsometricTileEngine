@@ -8,39 +8,39 @@ PlayScreen::PlayScreen() {
 
 
 
-	mTileMap = new TileMap();
-	mTileMap->Parent(this);
-	mTileMap->Position(Vector2(Vec2_Zero));
+	//mTileMap = new TileMap();
+	//mTileMap->Parent(this);
+	//mTileMap->Position(Vector2(Vec2_Zero));
 
-	//mTestRoom = new DungeonRoom();
-	//mTestRoom->Parent(this);
-	//mTestRoom->Position(Vec2_Zero);
+	mTestDungeon = new Dungeon();
+	mTestDungeon->Parent(this);
+	mTestDungeon->Position(Vec2_Zero);
 }
 PlayScreen::~PlayScreen() {
-	delete mTileMap;
-	mTileMap = nullptr;
+	//delete mTileMap;
+	//mTileMap = nullptr;
 
-	//delete mTestRoom;
-	//mTestRoom = nullptr;
+	delete mTestDungeon;
+	mTestDungeon = nullptr;
 
 	mInput = nullptr;
 }
 
 void PlayScreen::Update() {
 	
+	mTestDungeon->Update();
 	
-	
-	mTileMap->Update();
+	//mTileMap->Update();
 
-	if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE)) {
-		delete mTileMap;
-		Tile::ResetTileCreatedCount();
-		mTileMap = new TileMap();
-		mTileMap->Parent(this);
-		mTileMap->Position(Vec2_Zero);
-	}
+	//if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE)) {
+	//	delete mTileMap;
+	//	Tile::ResetTileCreatedCount();
+	//	mTileMap = new TileMap();
+	//	mTileMap->Parent(this);
+	//	mTileMap->Position(Vec2_Zero);
+	//}
 }
 void PlayScreen::Render() {
-	mTileMap->Render();
-	//mTestRoom->Render();
+	//mTileMap->Render();
+	mTestDungeon->Render();
 }

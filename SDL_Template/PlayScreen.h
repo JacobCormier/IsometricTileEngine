@@ -2,7 +2,7 @@
 #define __PLAYSCREEN_H
 
 #include "TileMap.h"
-#include "DungeonRoom.h"
+#include "Dungeon.h"
 
 using namespace SDLFramework;
 
@@ -10,8 +10,8 @@ class PlayScreen : public GameEntity {
 private:
 	InputManager* mInput;
 
-	TileMap* mTileMap;
-	//DungeonRoom* mTestRoom;
+	//TileMap* mTileMap;
+	Dungeon* mTestDungeon;
 
 
 

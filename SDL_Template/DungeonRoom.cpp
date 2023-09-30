@@ -23,8 +23,25 @@ DungeonRoom::~DungeonRoom() {
 	mBackground == nullptr;
 }
 
+void DungeonRoom::AddDoor(DungeonRoom::Direction direction, DungeonRoom* connectedRoom) {
+	if (mDoors[direction] == nullptr) {
+		mDoors[direction] = connectedRoom;
+	}
+	else {
+		std::cout << "DungeonRoom::AddDoor() Error: already connected!" << std::endl;
+	}
+}
+DungeonRoom* DungeonRoom::GetDoor(DungeonRoom::Direction direction) {
+	if (mDoors[direction] != nullptr) {
+		return mDoors[direction];
+	}
+	else {
+		return nullptr;
+	}
+}
+
 void DungeonRoom::Update() {
-	// Updates entities within room?
+	// Updates entities within room
 }
 void DungeonRoom::Render() {
 	// Render walls
@@ -32,19 +49,19 @@ void DungeonRoom::Render() {
 	mBackground->Render();
 
 	for (int i = 0; i <= (int)Direction::LEFT; i++) {
-		if (mDoors[(Direction)i]) {
+		if (mDoors[(Direction)i] != nullptr) {
 			mDoorTextures[(Direction)i]->Render();
 		}
 	}
 }
 
 void DungeonRoom::CreateDoorTextures() {
-	mDoors[Direction::NONE] = false;
+	mDoors[Direction::NONE] = nullptr;
 	mDoorTextures[Direction::NONE] = nullptr;
 	for (int i = 0; i <= (int)Direction::LEFT; i++) {
 		//If true, the door renders.
 		// Would instead be nullptr if mDoors were set to a DungeonRoom*
-		mDoors[(Direction)i] = true;
+		mDoors[(Direction)i] = nullptr;
 
 		mDoorTextures[(Direction)i] = new GLTexture("DoorOpen.png");
 		mDoorTextures[(Direction)i]->Scale(mDoorTextures[(Direction)i]->Scale() * 2.1f);
